@@ -79,3 +79,31 @@ print(q5.split(","))
 q6 = "H a u n t e d"
 print(q6.split(" "))
 
+#String Concatenation: using the + symbol
+q7 = "Why"
+q8 = "Him"
+q9 = q7 + q8
+print(q9)
+
+q10 = q7 + " " + q8
+print(q10)
+
+
+#Python format string
+age = "76"
+txt6 = "The age of the average Grand father is " + age
+print(txt6)
+#Note: You cannot concatenate a string with an int; it would result to a typeerror
+#But the concatenation can work using the .format() method
+age1 = 87
+txt8 = "His age is {}"
+print(txt8.format(age1) )
+
+price = 45000
+no = 15
+quantity = 3
+
+stat = "The price of the goods is {} for {} quantities at number {}"
+print(stat.format(price,quantity,no))
+
+#Python Escape characters: Used to escape strings
