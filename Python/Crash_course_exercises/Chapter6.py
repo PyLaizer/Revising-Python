@@ -133,7 +133,7 @@ pet1 = {
 }          
 
 pet2 = {
-    "animal_type":"frogs",
+    "animal_type":"frog",
     "Owner":"Christene",
 } 
 
@@ -149,4 +149,79 @@ pet4 = {
 
 pets = [pet1,pet2,pet3,pet4]
 for pet in pets:
-    print(f"The {pets['animal_type']} is owned by {pet['Owner']}")
+    print(f"\nThe {pet['animal_type']} is owned by {pet['Owner']}")
+
+#6.9
+favorite_places = {
+    "Chidubem":"Florida",
+    "Awele":"London",
+    "Elliot":"Paris",
+}   
+
+for child,fav_place in favorite_places.items():
+    print(f"\n{child}'s favorite place to visit is {fav_place}")
+
+#6.10
+favouriteNumbers = {
+    "Kyrie":[2,3,4],
+    "LeBron":[23,24,25],
+    "Durant":[35,36,37],
+    "Steph":[30,31,32],
+    "Jordan":[23,35],
+    }
+
+for player,fav_num in favouriteNumbers.items():
+    print(f"\n{player}'s favotite numbers are: ")
+    for num in fav_num:
+        print(f"{num}") 
+
+#6.11
+cities = {
+   "Florida":{
+    "Country":"United States Of America",
+    "Population":21_220_000,
+    "Fact":"Florida has the most golf course than any state in America",
+   },
+   "London":{
+    "Country":"United Kingdom",
+    "Population":8_982_000,
+    "Fact":"London is the smallest city in England",
+   },
+   "Paris":{
+    "Country":"France",
+    "Population":2_100_000,
+    "Fact":"Paris has one of the most famous paintings in the world",
+   }, 
+} 
+for city,info in cities.items():
+    print(f"\nSome Info about {city}:")
+    for data,result in info.items():
+        print(f"'{data}': {result}")     
+
+#6.12
+#Using exercise 6.9
+favorite_places["Mitchelle"] = "United States of America"
+favorite_places["Laura"] = "Canada"
+
+for child,fav_place in favorite_places.items():
+    print(f"\n{child}'s favorite place to visit is {fav_place}")
+
+
+
+#Just tested looping through a specific nested Dictionary! ! ! ! 
+# 
+# 
+# 
+# O M G, It Worked ! ! ! ! ! 😱😱😱😱😱😱😱😱😱😱🤪😊☺️
+testdict = {
+    "a":"ahhhhh",
+    "b":"bahhhh",
+    "c":{
+        "Heat":"Miami",
+        "Celtics":"Boston",
+        "Lakers":"Los Angeles",
+    },
+}
+
+for team,city in testdict["c"].items():
+    print(f"\nThe '{team}' are representing {city}.")
