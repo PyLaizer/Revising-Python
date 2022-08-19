@@ -2,8 +2,9 @@
 
 #               F       U       N       C       T       I       O       N       S
 
-#Exercise 8.1
+#Exercise 8.1 & 8.17
 def display_messages(username):
+    """Displays the names of Students and what they are currently learning"""
     print(f"\n {username} is learning about 'Functions' in this chapter")
 
 display_messages("Moritz")    
@@ -12,8 +13,9 @@ display_messages("Fritzi")
 display_messages("Lisa")
 display_messages("Dan")
 
-#Exercise 8.2
+#Exercise 8.2 & 8.17
 def favorite_book(title):
+    """Displays One of my favorite books ever"""
     print(f"\nOne of my favorite books is {title}")
 
 favorite_book("Oliver Twist")   
@@ -139,3 +141,31 @@ print(sent_messages)
 send_messages(messages[:],sent_messages)
 print(messages)
 print(sent_messages)
+
+#Exercise 8.12
+def sandwiches(*ingredients):
+    print("\nThese are the ingredients of your sandwich")
+    for ingredient in ingredients:
+        print(f"- {ingredient}")
+
+sandwiches("2 hardboiled eggs - chopped","1 tablespoon butter","1 medium carrot - grated","1 Sardine","1 fresh tomato - deseeded and chopped")        
+
+#Exercise 8.13
+def build_profile(first,last,**user_profile):
+    user_profile["first_name"] = first
+    user_profile["last_name"] = last
+    return user_profile
+
+user_profile = build_profile("Anthony","Edwards",height="1.93m",league="NBA",profession="Basketballer")    
+print(f"\n{user_profile}")
+
+#Exercise 8.14
+def car_info(manufacturer,model_name,**other_info):
+    other_info["manufacturer"] = manufacturer
+    other_info["model"] = model_name
+    return other_info
+    
+
+audi_info = car_info("Audi","R9",year=2019,engine="V10",price="$172,850")
+print(audi_info)
+
