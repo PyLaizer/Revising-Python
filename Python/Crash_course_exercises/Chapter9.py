@@ -117,3 +117,58 @@ user4.increment_login_attempts()
 user4.increment_login_attempts()
 user4.reset_login_attempts()
 print(user4.login_attempts)
+
+#Exercise 9.6
+#Using Exercise 9.1
+
+# IceCreamStand class is inheriting from Restaurant
+class IceCreamStand(Restaurant):
+    def __init__(self, res_name, cuisine_type):
+        super().__init__(res_name, cuisine_type)
+        self.flavors = []
+
+    def display_flavor(self,*flavors):
+        self.flavors = flavors
+        print(f"The available flavors are:")    
+        for flavour in self.flavors:
+            print(f"\n-{flavour}")
+
+
+icecream  = IceCreamStand("Krispy Cream Ice Cream","Ice creams")
+icecream.display_flavor("chocolate","vanilla","orange","strawberry") 
+
+
+#Exercise 9.7
+#Using Exercise 9.3
+
+#Admin class is inheriting from User
+class Admin(User):
+    def __init__(self, first_name, last_name, age, username, email):
+        super().__init__(first_name, last_name, age, username, email)
+        self.priviledges = Priviledges("can delete user","can disable user","can add user")
+
+# DO NOT UNCOMMENT, CAUSE ITS ALREADY EXIST IN Priviledges class in exercise 9.8
+    # def show_priviledges(self):
+    #     print("\nThe priviledges of the Admin")
+    #     for privilege in self.priviledges:
+    #         print(f"\n - {privilege}")          
+
+
+# the_admin = Admin("Satoshi","Nakamoto",69,"bitcoin01","bitcoinking01@gmail.com")
+# the_admin.show_priviledges()
+
+#Exercise 9.8
+class Priviledges:
+    def __init__(self,*priviledges):
+        self.priviledges = priviledges
+
+    def show_priviledges(self):
+        print("\nThe priviledges of the Admin")
+        for privilege in self.priviledges:
+            print(f"\n - {privilege}")    
+
+
+
+the_admin2 = Admin("Me","Anon",00,"EE2100","EE2100@anon.com")
+the_admin2.priviledges.show_priviledges()
+
