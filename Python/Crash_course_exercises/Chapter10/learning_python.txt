@@ -1,0 +1,5 @@
+In Python, lists can be created 
+In Python, tuples can be created
+In Python, sets can be created
+In Python, dictionaries can be created
+In Python, Object-oriented programming paradigm is important
