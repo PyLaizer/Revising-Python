@@ -5,6 +5,7 @@ import pygame
 from settings import Settings
 from ship import Ship
 from bullet import Bullet
+from alien import Alien
 
 class AlienInvasion:
     """Overall class to manage game assets and behaviour."""
@@ -21,6 +22,9 @@ class AlienInvasion:
         # #Set the background color
         # self.bg_color = self.setting.bg_color
         self.bullets = pygame.sprite.Group()
+        self.aliens = pygame.sprite.Group()
+
+        self._create_fleet()
 
     def run_game(self):
         """Start the main loop for the game."""
@@ -84,7 +88,35 @@ class AlienInvasion:
         # Get rid of bullets that have disappeared
         for bullet in self.bullets.copy():
             if bullet.rect.bottom <= 0:
-                self.bullets.remove(bullet)        
+                self.bullets.remove(bullet)   
+
+    def _create_fleet(self):
+        """Create the fleet of aliens"""
+        #Make an alien and find the number of aliens in a row
+        alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+        available_space_x = self.setting.screen_width - (2 * alien_width)
+        num_of_alien_x = available_space_x // (2 * alien_width)
+
+        #Determine the number of rows of aliens that fit on the screen
+        ship_height = self.ship.rect.height
+        available_space_y = (self.setting.screen_heigth - (3 * alien_height) - ship_height)
+        num_rows = available_space_y // (2 * alien_height)
+
+        #Create the first row of aliens
+        for row_num in range(num_rows):
+            for alien_number in range(num_of_alien_x):
+                self._create_alien(alien_number, row_num)
+               
+
+    def _create_alien(self, alien_number, row_num):
+        """Create an alien and place it in a row"""
+        alien = Alien(self)
+        alien_width, alien_height = alien.rect.size
+        alien.x = alien_width + 2 * alien_width * alien_number 
+        alien.rect.x = alien.x
+        alien.rect.y = alien_height + 2 * alien_height * row_num
+        self.aliens.add(alien)                    
 
     def _update_screen(self):
         """Update images of the screen and flip to the new screen"""
@@ -92,6 +124,7 @@ class AlienInvasion:
         self.ship.blitme()
         for bullet in self.bullets.sprites():
             bullet.draw_bullet()
+        self.aliens.draw(self.screen)    
         #Make the most recently drawn screen visible.
         pygame.display.flip()
         #Redraw the screen during each pass through the loop 
